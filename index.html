@@ -6,32 +6,23 @@
     <meta name="description" content="Justin S. - Innovative Software Engineer Portfolio">
     <title>Justin S. - Software Engineer Portfolio</title>
     
-    <!-- Preload Critical Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Root Variables */
         :root {
-            /* Enhanced Color Palette */
             --primary: 96, 165, 250;
             --secondary: 79, 70, 229;
             --accent: 139, 92, 246;
             --background: 15, 23, 42;
             --surface: 30, 41, 59;
             --text: 248, 250, 252;
-            
-            /* Typography */
             --font-display: 'Space Grotesk', sans-serif;
             --font-body: 'Outfit', sans-serif;
-            
-            /* Transitions */
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
             --transition-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-            
-            /* Spacing */
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 1.5rem;
@@ -39,7 +30,6 @@
             --spacing-xl: 3rem;
         }
 
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -59,7 +49,6 @@
             line-height: 1.6;
         }
 
-        /* Particles Container */
         #particles-js {
             position: fixed;
             top: 0;
@@ -70,7 +59,6 @@
             pointer-events: none;
         }
 
-        /* Enhanced Navigation */
         .nav {
             position: fixed;
             top: 0;
@@ -155,7 +143,6 @@
             transform-origin: left;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -228,7 +215,152 @@
             box-shadow: 0 5px 15px rgba(var(--primary), 0.2);
         }
 
-        /* Animations */
+        .section {
+            padding: var(--spacing-xl) var(--spacing-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--spacing-xl);
+            background: linear-gradient(45deg, rgb(var(--primary)), rgb(var(--accent)));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s var(--transition-smooth) forwards;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .card {
+            background: rgba(var(--surface), 0.5);
+            border: 1px solid rgba(var(--primary), 0.1);
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+            transition: all 0.3s var(--transition-smooth);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(var(--primary), 0.1);
+            border-color: rgba(var(--primary), 0.3);
+        }
+
+        .skill-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+            color: rgb(var(--primary));
+        }
+
+        .skill-title i {
+            margin-right: var(--spacing-xs);
+        }
+
+        .skill-progress {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(var(--text), 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0 20px;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, rgb(var(--primary)), rgb(var(--accent)));
+            transform: translateX(-100%);
+            transition: transform 1s var(--transition-smooth);
+        }
+
+        .skill-fill.visible {
+            transform: translateX(0);
+        }
+
+        .project-card {
+            background: rgba(var(--surface), 0.5);
+            border: 1px solid rgba(var(--primary), 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(var(--primary), 0.1);
+            border-color: rgba(var(--primary), 0.3);
+        }
+
+        .project-image {
+            padding: var(--spacing-xl);
+            background: linear-gradient(45deg, rgba(var(--primary), 0.1), rgba(var(--secondary), 0.1));
+            text-align: center;
+        }
+
+        .project-image i {
+            font-size: 3rem;
+            color: rgb(var(--primary));
+        }
+
+        .project-content {
+            padding: var(--spacing-lg);
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: rgb(var(--text));
+        }
+
+        .project-description {
+            color: rgba(var(--text), 0.8);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-links {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .project-link {
+            color: rgb(var(--primary));
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s var(--transition-smooth);
+        }
+
+        .project-link:hover {
+            color: rgb(var(--accent));
+        }
+
         @keyframes titleReveal {
             0% {
                 opacity: 0;
@@ -251,7 +383,6 @@
             }
         }
 
-        /* Media Queries for Navigation & Hero */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -268,14 +399,16 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
     <div id="particles-js"></div>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="#" class="nav-logo">
@@ -291,87 +424,81 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Crafting Digital Experiences</h1>
-            <p class="hero-subtitle">Software Engineer | Creative Problem Solver | Tech Enthusiast</p>
+            <h1 class="hero-title">Aspiring AI Software Engineer</h1>
+            <p class="hero-subtitle">Software Engineering Student | AI Enthusiast | Future ML Developer</p>
             <div class="hero-tags">
-                <div class="tag"><i class="fas fa-code"></i>Full-Stack Development</div>
-                <div class="tag"><i class="fas fa-laptop-code"></i>Modern Technologies</div>
-                <div class="tag"><i class="fas fa-rocket"></i>Innovation Driven</div>
+                <div class="tag"><i class="fas fa-code"></i>Software Development</div>
+                <div class="tag"><i class="fas fa-brain"></i>AI/ML Learning</div>
+                <div class="tag"><i class="fas fa-graduation-cap"></i>CS Student</div>
             </div>
         </div>
     </section>
-<!-- About Section -->
+
     <section id="about" class="section">
         <div class="section-container">
             <h2 class="section-title">About Me</h2>
             <div class="grid">
-                <div class="card" data-aos="fade-up">
-                    <div class="card-content">
-                        <h3 class="skill-title"><i class="fas fa-rocket"></i> Journey</h3>
-                        <p>As an aspiring software engineer, I'm passionate about creating innovative solutions. Currently pursuing an AAS in Computer Technology with Programming Specialization, combining formal education with hands-on development.</p>
-                    </div>
+                <div class="card">
+                    <h3 class="skill-title">🚀 Journey</h3>
+                    <p>As an aspiring software engineer with a passion for AI/ML, I'm excited about creating innovative solutions. Currently pursuing an AAS in Computer Technology with Programming Specialization, combining formal education with hands-on development and a focus on machine learning technologies.</p>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-content">
-                        <h3 class="skill-title"><i class="fas fa-lightbulb"></i> Approach</h3>
-                        <p>I believe in continuous learning and staying current with emerging technologies. Through Harvard's CS50 and personal projects, I'm building a strong foundation in computer science fundamentals.</p>
-                    </div>
+                <div class="card">
+                    <h3 class="skill-title">🎯 Approach</h3>
+                    <p>I believe in continuous learning and staying current with emerging technologies. Through Harvard's CS50, online ML courses, and personal projects, I'm building a strong foundation in computer science fundamentals while exploring the exciting world of artificial intelligence.</p>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-content">
-                        <h3 class="skill-title"><i class="fas fa-target"></i> Vision</h3>
-                        <p>My goal is to become a versatile software engineer who can architect elegant solutions to complex problems, making a meaningful impact through innovative technology.</p>
-                    </div>
+                <div class="card">
+                    <h3 class="skill-title">👁️ Vision</h3>
+                    <p>My goal is to become a versatile software engineer specializing in AI/ML who can architect elegant solutions to complex problems, making a meaningful impact through innovative technology.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="section-container">
             <h2 class="section-title">Skills & Expertise</h2>
             <div class="grid">
-                <div class="card" data-aos="fade-right">
-                    <div class="card-content">
-                        <h3 class="skill-title">Development</h3>
-                        <div class="skill-progress">
-                            <p>HTML/CSS</p>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 75%"></div>
-                            </div>
+                <div class="card">
+                    <h3 class="skill-title">Development</h3>
+                    <div class="skill-progress">
+                        <p>Python/PyTorch</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 85%"></div>
                         </div>
-                        <div class="skill-progress">
-                            <p>JavaScript</p>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 60%"></div>
-                            </div>
+                    </div>
+                    <div class="skill-progress">
+                        <p>TensorFlow</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 75%"></div>
                         </div>
-                        <div class="skill-progress">
-                            <p>Python</p>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 45%"></div>
-                            </div>
+                    </div>
+                    <div class="skill-progress">
+                        <p>Scikit-learn</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 80%"></div>
                         </div>
                     </div>
                 </div>
-                <div class="card" data-aos="fade-left">
-                    <div class="card-content">
-                        <h3 class="skill-title">Tools & Technologies</h3>
-                        <div class="skill-progress">
-                            <p>Git & GitHub</p>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 70%"></div>
-                            </div>
+                <div class="card">
+                    <h3 class="skill-title">Tools & Technologies</h3>
+                    <div class="skill-progress">
+                        <p>Deep Learning</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 75%"></div>
                         </div>
-                        <div class="skill-progress">
-                            <p>VS Code</p>
-                            <div class="skill-bar">
-                                <div class="skill-fill" style="width: 80%"></div>
-                            </div>
+                    </div>
+                    <div class="skill-progress">
+                        <p>Computer Vision</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress">
+                        <p>NLP</p>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 65%"></div>
                         </div>
                     </div>
                 </div>
@@ -379,12 +506,11 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="section-container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="grid">
-                <div class="project-card" data-aos="fade-up">
+                <div class="project-card">
                     <div class="project-image">
                         <i class="fas fa-globe"></i>
                     </div>
@@ -405,37 +531,28 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="section-container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="grid">
-                <div class="card" data-aos="fade-up">
-                    <div class="card-content">
-                        <h3 class="skill-title"><i class="fab fa-github"></i> GitHub</h3>
-                        <a href="https://github.com/RoOster214" class="project-link" target="_blank">@RoOster214</a>
-                    </div>
+                <div class="card">
+                    <h3 class="skill-title"><i class="fab fa-github"></i> GitHub</h3>
+                    <a href="https://github.com/RoOster214" class="project-link" target="_blank">@RoOster214</a>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-content">
-                        <h3 class="skill-title"><i class="fas fa-envelope"></i> Email</h3>
-                        <a href="mailto:justinsh@outlook.com" class="project-link">justinsh@outlook.com</a>
-                    </div>
+                <div class="card">
+                    <h3 class="skill-title"><i class="fas fa-envelope"></i> Email</h3>
+                    <a href="mailto:justinsh@outlook.com" class="project-link">justinsh@outlook.com</a>
                 </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-content">
-                        <h3 class="skill-title"><i class="fab fa-linkedin"></i> LinkedIn</h3>
-                        <a href="#" class="project-link">Coming Soon</a>
-                    </div>
+                <div class="card">
+                    <h3 class="skill-title"><i class="fab fa-linkedin"></i> LinkedIn</h3>
+                    <a href="#" class="project-link">Coming Soon</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Initialize Particles.js
         particlesJS('particles-js', {
             "particles": {
                 "number": {
@@ -507,7 +624,6 @@
             "retina_detect": true
         });
 
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -519,7 +635,6 @@
             });
         }, { threshold: 0.1 });
 
-        // Observe elements
         document.querySelectorAll('.card, .project-card').forEach(el => {
             observer.observe(el);
         });
@@ -531,7 +646,6 @@
             observer.observe(fill);
         });
 
-        // Navigation scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
             if (window.scrollY > 100) {
@@ -543,4 +657,3 @@
     </script>
 </body>
 </html>
-
