@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Justin S. - Software Engineer Portfolio | Building the Future Through Code">
+    <meta name="description" content="Justin S. - Innovative Software Engineer Portfolio">
     <title>Justin S. - Software Engineer Portfolio</title>
-    <!-- Optimized Google Font -->
+    
+    <!-- Preload Critical Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
     <style>
+        /* Root Variables */
         :root {
             /* Enhanced Color Palette */
-            --primary-color: #60a5fa;
-            --primary-light: #93c5fd;
-            --primary-dark: #3b82f6;
-            --accent-color: #818cf8;
-            --background-color: #0f172a;
-            --surface-color: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #e2e8f0;
-            --success-color: #34d399;
+            --primary: 96, 165, 250;
+            --secondary: 79, 70, 229;
+            --accent: 139, 92, 246;
+            --background: 15, 23, 42;
+            --surface: 30, 41, 59;
+            --text: 248, 250, 252;
             
             /* Typography */
-            --font-main: 'Outfit', system-ui, -apple-system, sans-serif;
-            --font-size-sm: clamp(0.8rem, 1.5vw, 0.9rem);
-            --font-size-base: clamp(1rem, 1.5vw, 1.1rem);
-            --font-size-lg: clamp(1.2rem, 2vw, 1.4rem);
-            --font-size-xl: clamp(1.5rem, 3vw, 2rem);
-            --font-size-2xl: clamp(2rem, 4vw, 3rem);
-            --font-size-3xl: clamp(2.5rem, 5vw, 4rem);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            
+            /* Transitions */
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
             
             /* Spacing */
             --spacing-xs: 0.5rem;
@@ -39,99 +37,81 @@
             --spacing-md: 1.5rem;
             --spacing-lg: 2rem;
             --spacing-xl: 3rem;
-            
-            /* Animations */
-            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-main);
-            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            background-color: var(--background-color);
-            color: var(--text-primary);
-            line-height: 1.7;
-            font-size: var(--font-size-base);
-            font-weight: 400;
+            font-family: var(--font-body);
+            background-color: rgb(var(--background));
+            color: rgb(var(--text));
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Enhanced Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
-            line-height: 1.3;
-            letter-spacing: -0.02em;
-        }
-
-        h1 {
-            font-size: var(--font-size-3xl);
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: var(--font-size-2xl);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        h3 {
-            font-size: var(--font-size-xl);
-            color: var(--primary-light);
-            margin-bottom: var(--spacing-md);
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-md);
-            font-size: var(--font-size-base);
-            line-height: 1.8;
-        }
-
-        /* Refined Navigation */
-        .nav {
-            background: rgba(30, 41, 59, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Particles Container */
+        #particles-js {
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Enhanced Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: var(--spacing-sm) 0;
-            transition: all var(--transition-normal);
+            background: rgba(var(--background), 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(var(--text), 0.1);
+            transition: all 0.3s var(--transition-smooth);
         }
 
         .nav-scrolled {
             padding: var(--spacing-xs) 0;
-            background: rgba(15, 23, 42, 0.98);
+            background: rgba(var(--background), 0.95);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-lg);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .nav-logo {
-            font-size: var(--font-size-lg);
-            font-weight: 600;
-            color: var(--primary-color);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgb(var(--primary));
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            transition: color var(--transition-fast);
+            gap: 0.5rem;
+            transition: color 0.3s var(--transition-smooth);
         }
 
         .nav-logo:hover {
-            color: var(--primary-light);
+            color: rgb(var(--accent));
+            transform: translateY(-2px);
         }
 
         .nav-links {
@@ -139,23 +119,40 @@
             gap: var(--spacing-lg);
         }
 
-        .nav-links a {
-            color: var(--text-secondary);
+        .nav-link {
+            color: rgb(var(--text));
             text-decoration: none;
             font-weight: 500;
-            font-size: var(--font-size-base);
             padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: 8px;
-            transition: all var(--transition-fast);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
+            transition: all 0.3s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-light);
-            background: rgba(96, 165, 250, 0.1);
-            transform: translateY(-1px);
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                rgba(var(--primary), 0.1),
+                rgba(var(--secondary), 0.1));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .nav-link:hover {
+            color: rgb(var(--primary));
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         /* Hero Section */
@@ -164,30 +161,41 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--spacing-xl) var(--spacing-md);
             position: relative;
+            padding: var(--spacing-xl) var(--spacing-lg);
             overflow: hidden;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 1000px;
             text-align: center;
-            z-index: 1;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero h1 {
-            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(
+                45deg,
+                rgb(var(--primary)),
+                rgb(var(--accent))
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: var(--spacing-md);
-            animation: fadeInUp 1s ease-out;
+            animation: titleReveal 1s var(--transition-smooth) forwards;
         }
 
         .hero-subtitle {
-            font-size: var(--font-size-lg);
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-xl);
-            animation: fadeInUp 1s ease-out 0.2s backwards;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: rgba(var(--text), 0.9);
+            margin-bottom: var(--spacing-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.2s forwards;
         }
 
         .hero-tags {
@@ -195,181 +203,55 @@
             gap: var(--spacing-md);
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: var(--spacing-lg);
-            animation: fadeInUp 1s ease-out 0.4s backwards;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.4s forwards;
         }
 
         .tag {
-            background: rgba(96, 165, 250, 0.1);
-            color: var(--primary-light);
             padding: var(--spacing-sm) var(--spacing-lg);
             border-radius: 50px;
-            font-size: var(--font-size-base);
+            background: rgba(var(--primary), 0.1);
+            border: 1px solid rgba(var(--primary), 0.2);
+            color: rgb(var(--text));
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            transition: all var(--transition-normal);
+            gap: 0.5rem;
+            transition: all 0.3s var(--transition-smooth);
         }
 
         .tag:hover {
             transform: translateY(-5px);
-            background: rgba(96, 165, 250, 0.15);
-            border-color: var(--primary-color);
-        }
-
-        /* Sections */
-        .section {
-            padding: var(--spacing-xl) 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: var(--spacing-xl);
-            position: relative;
-            display: inline-block;
-            padding-bottom: var(--spacing-sm);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--surface-color);
-            border-radius: 16px;
-            padding: var(--spacing-lg);
-            transition: all var(--transition-normal);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            padding: 0 var(--spacing-md);
-        }
-
-        .project-card {
-            background: var(--surface-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all var(--transition-normal);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-image {
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .project-content {
-            padding: var(--spacing-lg);
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-lg);
-            padding: 0 var(--spacing-md);
-        }
-
-        .contact-card {
-            text-align: center;
-            padding: var(--spacing-lg);
-            transition: all var(--transition-normal);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-md);
-            transition: transform var(--transition-normal);
-        }
-
-        .contact-card:hover .contact-icon {
-            transform: scale(1.1);
-            color: var(--primary-light);
-        }
-
-        .contact-card a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-        }
-
-        .contact-card a:hover {
-            color: var(--primary-light);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            bottom: var(--spacing-lg);
-            right: var(--spacing-lg);
-            z-index: 1000;
-            background: var(--surface-color);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            padding: var(--spacing-sm);
-            cursor: pointer;
-            transition: all var(--transition-normal);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            border-color: var(--primary-color);
+            background: rgba(var(--primary), 0.15);
+            border-color: rgba(var(--primary), 0.4);
+            box-shadow: 0 5px 15px rgba(var(--primary), 0.2);
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
+        @keyframes titleReveal {
+            0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(-50px);
             }
-            to {
+            100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            50% {
-                transform: translateY(-10px);
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Responsive Design */
+        /* Media Queries for Navigation & Hero */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -379,7 +261,6 @@
             .nav-links {
                 width: 100%;
                 justify-content: center;
-                gap: var(--spacing-sm);
                 flex-wrap: wrap;
             }
 
@@ -387,250 +268,278 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .projects-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
     <nav class="nav">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="projects-grid">
-                <div class="card" data-aos="fade-up">
-                    <h3><i class="fas fa-rocket"></i> My Journey</h3>
-                    <p>As an aspiring software engineer, I'm dedicated to transforming my passion for technology into innovative solutions. Currently pursuing an AAS in Computer Technology with Programming Specialization, I combine formal education with hands-on project development.</p>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <h3><i class="fas fa-bullseye"></i> My Focus</h3>
-                    <p>I'm passionate about full-stack development and creating user-centric applications. Through Harvard's CS50 course and personal projects, I'm building a strong foundation in computer science fundamentals and modern web technologies.</p>
-                </div>
-                <div class="card" data-aos="fade-up" data-aos-delay="200">
-                    <h3><i class="fas fa-arrow-trend-up"></i> My Goals</h3>
-                    <p>My aim is to become a versatile software engineer who can architect elegant solutions to complex problems. I'm committed to continuous learning and staying current with emerging technologies to create meaningful impact through code.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Skills & Learning</h2>
-            <div class="projects-grid">
-                <div class="card" data-aos="fade-right">
-                    <h3>Currently Learning</h3>
-                    <div class="skill-progress">
-                        <p>HTML/CSS</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <p>JavaScript</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 15%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <p>Python</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 10%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" data-aos="fade-left">
-                    <h3>Tools & Technologies</h3>
-                    <div class="skill-progress">
-                        <p>Git & GitHub</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 35%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-progress">
-                        <p>VS Code</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card" data-aos="fade-up">
-                    <div class="project-image">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Portfolio Website</h3>
-                        <p>A modern, responsive portfolio website built with HTML and CSS. Features include dark mode, smooth animations, and mobile-first design.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/RoOster214/portfolio-website" target="_blank"><i class="fab fa-github"></i> View Code</a>
-                            <a href="https://rooster214.github.io/portfolio-website" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education" class="section">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="projects-grid">
-                <div class="card" data-aos="fade-right">
-                    <h3><i class="fas fa-graduation-cap"></i> AAS in Computer Technology</h3>
-                    <p>Programming Specialization</p>
-                    <p><i class="fas fa-calendar"></i> 2024 - Present</p>
-                </div>
-                <div class="card" data-aos="fade-left">
-                    <h3><i class="fas fa-laptop-code"></i> Harvard CS50x</h3>
-                    <p>Introduction to Computer Science</p>
-                    <p><i class="fas fa-calendar"></i> 2024</p>
-                    <p>Currently enrolled in Harvard's comprehensive introduction to computer science</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="card contact-card" data-aos="fade-up">
-                    <div class="contact-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/RoOster214" target="_blank">@RoOster214</a>
-                </div>
-                <div class="card contact-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <a href="mailto:justinsh@outlook.com">justinsh@outlook.com</a>
-                </div>
-                <div class="card contact-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <h3>LinkedIn</h3>
-                    <a href="#">Coming Soon</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="theme-toggle">
-        <button onclick="toggleTheme()" class="theme-toggle">
-            <i class="fas fa-sun"></i>
-        </button>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        // Theme Toggle
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.querySelector('.theme-toggle i');
-            
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-                icon.className = 'fas fa-sun';
-            } else {
-                body.setAttribute('data-theme', 'light');
-                icon.className = 'fas fa-moon';
-            }
-            
-            localStorage.setItem('theme', body.getAttribute('data-theme') || 'dark');
-        }
-
-        // Load saved theme
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            if (savedTheme === 'light') {
-                document.body.setAttribute('data-theme', 'light');
-                document.querySelector('.theme-toggle i').className = 'fas fa-moon';
-            }
-
-            // Navbar scroll effect
-            const nav = document.querySelector('.nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    nav.classList.add('nav-scrolled');
-                } else {
-                    nav.classList.remove('nav-scrolled');
-                }
-            });
-
-            // Animate progress bars when in view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.width = entry.target.getAttribute('data-width');
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            document.querySelectorAll('.progress-fill').forEach(fill => {
-                const width = fill.style.width;
-                fill.style.width = '0';
-                fill.setAttribute('data-width', width);
-                observer.observe(fill);
-            });
-        });
-    </script>
-</body>
-</html>="nav-container">
+        <div class="nav-container">
             <a href="#" class="nav-logo">
                 <i class="fas fa-code"></i>
                 Justin S.
             </a>
             <div class="nav-links">
-                <a href="#about"><i class="fas fa-user"></i>About</a>
-                <a href="#skills"><i class="fas fa-code-branch"></i>Skills</a>
-                <a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a>
-                <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
-                <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Crafting Digital Solutions</h1>
-            <p class="hero-subtitle">Software Engineer in Training | Building Tomorrow's Technology Today</p>
+            <h1 class="hero-title">Crafting Digital Experiences</h1>
+            <p class="hero-subtitle">Software Engineer | Creative Problem Solver | Tech Enthusiast</p>
             <div class="hero-tags">
-                <span class="tag"><i class="fas fa-laptop-code"></i>Full-Stack Development</span>
-                <span class="tag"><i class="fas fa-brain"></i>Creative Problem Solver</span>
-                <span class="tag"><i class="fas fa-rocket"></i>Continuous Learner</span>
+                <div class="tag"><i class="fas fa-code"></i>Full-Stack Development</div>
+                <div class="tag"><i class="fas fa-laptop-code"></i>Modern Technologies</div>
+                <div class="tag"><i class="fas fa-rocket"></i>Innovation Driven</div>
+            </div>
+        </div>
+    </section>
+<!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-container">
+            <h2 class="section-title">About Me</h2>
+            <div class="grid">
+                <div class="card" data-aos="fade-up">
+                    <div class="card-content">
+                        <h3 class="skill-title"><i class="fas fa-rocket"></i> Journey</h3>
+                        <p>As an aspiring software engineer, I'm passionate about creating innovative solutions. Currently pursuing an AAS in Computer Technology with Programming Specialization, combining formal education with hands-on development.</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-content">
+                        <h3 class="skill-title"><i class="fas fa-lightbulb"></i> Approach</h3>
+                        <p>I believe in continuous learning and staying current with emerging technologies. Through Harvard's CS50 and personal projects, I'm building a strong foundation in computer science fundamentals.</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-content">
+                        <h3 class="skill-title"><i class="fas fa-target"></i> Vision</h3>
+                        <p>My goal is to become a versatile software engineer who can architect elegant solutions to complex problems, making a meaningful impact through innovative technology.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section">
-        <div class
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="grid">
+                <div class="card" data-aos="fade-right">
+                    <div class="card-content">
+                        <h3 class="skill-title">Development</h3>
+                        <div class="skill-progress">
+                            <p>HTML/CSS</p>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-progress">
+                            <p>JavaScript</p>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-progress">
+                            <p>Python</p>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-left">
+                    <div class="card-content">
+                        <h3 class="skill-title">Tools & Technologies</h3>
+                        <div class="skill-progress">
+                            <p>Git & GitHub</p>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-progress">
+                            <p>VS Code</p>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section-container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="grid">
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Portfolio Website</h3>
+                        <p class="project-description">A modern, responsive portfolio website showcasing advanced animations, interactive elements, and clean design principles.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/RoOster214/portfolio-website" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="https://rooster214.github.io/portfolio-website" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="grid">
+                <div class="card" data-aos="fade-up">
+                    <div class="card-content">
+                        <h3 class="skill-title"><i class="fab fa-github"></i> GitHub</h3>
+                        <a href="https://github.com/RoOster214" class="project-link" target="_blank">@RoOster214</a>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-content">
+                        <h3 class="skill-title"><i class="fas fa-envelope"></i> Email</h3>
+                        <a href="mailto:justinsh@outlook.com" class="project-link">justinsh@outlook.com</a>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-content">
+                        <h3 class="skill-title"><i class="fab fa-linkedin"></i> LinkedIn</h3>
+                        <a href="#" class="project-link">Coming Soon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#60a5fa"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#60a5fa",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('skill-fill')) {
+                        entry.target.style.width = entry.target.getAttribute('data-width');
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe elements
+        document.querySelectorAll('.card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.skill-fill').forEach(fill => {
+            const width = fill.style.width;
+            fill.style.width = '0';
+            fill.setAttribute('data-width', width);
+            observer.observe(fill);
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
